@@ -48,12 +48,12 @@
 <body>
 
 	
-<div class="main">
+<form>
  <div class="form-group">
             <label class="col-sm-4 control-label req" for="SocialSecurity" id="ss-req">Social Security Number</label>
 
             <div class="col-sm-4">
-                <input class="form-control ssn" data-val="true" data-val-regex="Invalid Social Security Number" data-val-regex-pattern="^\d{9}|\d{3}-\d{2}-\d{4}$" id="ss" name="SocialSecurity" required="required" type="text" value="" />
+                <input class="form-control ssn" pattern="\d{3}[\-]\d{2}[\-]\d{4}" placeholder="123-45-6789" data-val="true" data-val-regex="Invalid Social Security Number" id="ss" name="SocialSecurity" required="required" type="text" value="" />
             </div>
             <span class="field-validation-valid" data-valmsg-for="SocialSecurity" data-valmsg-replace="true"></span>
         </div>
@@ -63,12 +63,18 @@
            
             <input class="ss_tax" data-val="true" data-val-required="Social Security or Taypayer ID" id="ss_tax" name="ss_tax" type="checkbox" value="false">
             <div class="col-sm-4">
-                <input class="form-control tin" data-val="true" data-val-regex="Invalid Taxpayer Identification Number" data-val-regex-pattern="^\d{9}|\d{2}-\d{7}$" disabled="disabled" id="tax" name="Taxpayer" type="text" value="" />
+                <input class="form-control tin" placeholder="12-3456789" pattern="\d{2}[\-]\d{7}" data-val="true" data-val-regex="Invalid Taxpayer Identification Number"  disabled="disabled" id="tax" name="Taxpayer" type="text" value="" />
             </div>
             <span class="field-validation-valid" data-valmsg-for="Taxpayer" data-valmsg-replace="true"></span>
         </div>
+        <div class="form-group centertext">
+            <button type="submit" id="SubmitClaim" class="btn btn-submit">
+                Agree and Submit
+            </button>
+        </div>
 
-</div>
+</form>
+
 
 
 
@@ -100,12 +106,13 @@
             rules: {
                 SocialSecurity: 'required',
                 Taxpayer: 'required'
-            }, // <-- here
+            }, 
             messages: {
                 SocialSecurity: 'Required',
                 Taxpayer: 'Required'
             }
         });
+       
 
 </script>
 
